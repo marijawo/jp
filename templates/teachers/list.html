@@ -1,0 +1,76 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %} List Teachers {% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">{% block breadcrumbs_home %}
+          Teachers
+        {% endblock %}</a>
+      </li>
+      <li class="breadcrumb-item active">{% block breadcrumbs_page %} List Teachers /
+                <a href="{{ url_for('add_teacher') }}" class="btn btn-success right btn-sm right"> Add Teacher</a>
+
+      {% endblock %}</li>
+    </ol>
+    <div class="card mb-3">
+      <div class="card-header bg-warning">
+        <i class="fa fa-table"></i> List Teachers
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+              <th>Teacher Code</th>
+              <th>First Name</th>
+              <th>Middle name</th>
+              <th>Last Name</th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Course</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+              <th>Teacher Code</th>
+              <th>First Name</th>
+              <th>Middle name</th>
+              <th>Last Name</th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Email</th>
+              <th>Course</th>
+            </tr>
+            </tfoot>
+            <tbody>
+
+            {% for teacher in teachers %}
+              <tr>
+                <td>{{ teacher.teacherCode }}</td>
+                <td>{{ teacher.firstName }}</td>
+                <td>{{ teacher.middleName }}</td>
+                <td>{{ teacher.lastName }}</td>
+                <td>{{ teacher.address }}</td>
+                <td>{{ teacher.phone }}</td>
+                <td>{{ teacher.email }}</td>
+                <td>{{ teacher.course }}</td>
+              </tr>
+
+            {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+
+
+  </div>
+
+{% endblock %}

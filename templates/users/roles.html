@@ -1,0 +1,62 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %} Roles Management {% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">{% block breadcrumbs_home %} Roles {% endblock %}</a>
+        </li>
+        <li class="breadcrumb-item active">{% block breadcrumbs_page %} Manage use roles  /
+          <a href="#" class="btn btn-success right btn-sm right"> Add Roles</a>
+        {% endblock %}</li>
+      </ol>
+
+      <div class="card">
+        <div class="card-header bg-warning">
+          <i class="fa fa-table"></i> Manage Roles
+
+        </div>
+
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Number of uses</th>
+              </tr>
+              </thead>
+              <tfoot>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Number of uses</th>
+              </tr>
+
+              <tbody>
+              <tr>
+                <td>Super</td>
+                <td>Super Admin can add and edit Students, Courses, Teachers and users</td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <td>Admin</td>
+                <td>Admin, can add and edit Students, Courses and Teachers</td>
+                <td>12</td>
+              </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,81 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %} User Management{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+
+    <div class="container-fluid">
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">{% block breadcrumbs_home %} Users {% endblock %}</a>
+        </li>
+        <li class="breadcrumb-item active">{% block breadcrumbs_page %} User Management /
+          <a href="{{ url_for('add_student') }}" class="btn btn-success right btn-sm right"> Add User</a>
+        {% endblock %}</li>
+
+      </ol>
+
+
+      <div class="card mb-3">
+        <div class="card-header bg-warning">
+          <i class="fa fa-table"></i> Manage users
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+              <thead>
+              <tr>
+                <th>Username / email</th>
+                <th>Role</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+              </thead>
+              <tfoot>
+              <tr>
+                <th>Username / email</th>
+                <th>Role</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+              </tfoot>
+
+              <tbody>
+              {% for user in users %}
+                <tr>
+                  <td>{{ user.email }}</td>
+                  <td>{{ users.role }}</td>
+                  <td>{{ users.description }}</td>
+                  <td> {{ user.active }}</td>
+                  <td>
+                    <a href="#" class="btn btn-primary">
+                      <i class="fa fa-pencil-square-o"></i>
+                      Update
+                    </a>
+
+                    <a href="#" class="btn btn-danger">
+                      <i class="fa fa-remove"></i>
+                      Delete
+                    </a>
+
+                  </td>
+                </tr>
+
+              {% endfor %}
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+      </div>
+
+
+    </div>
+
+{% endblock %}

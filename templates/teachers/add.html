@@ -1,0 +1,106 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %} Add Teacher{% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{{ url_for('teachers') }}">{% block breadcrumbs_home %}
+          Teachers
+        {% endblock %}</a>
+      </li>
+      <li class="breadcrumb-item active">{% block breadcrumbs_page %} Add Teacher {% endblock %}</li>
+    </ol>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mx-auto mt-3">
+      <div class="card-header bg-warning">Add Teacher</div>
+      <div class="card-body">
+        <form method="post" action="{{ url_for('add_teacher') }}">
+          {% from "_formhelpers.html" import render_field %}
+          <div class="form-group">
+            {{ form.csrf_token }}
+            {{ render_field(form.teacherCode, class="form-control", placeholder="Teacher Code") }}
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-4">
+                {{ render_field(form.firstName, class="form-control", placeholder="First Name") }}
+              </div>
+              <div class="col-md-4">
+                {{ render_field(form.middleName, class="form-control", placeholder="Middle Name") }}
+              </div>
+              <div class="col-md-4">
+                {{ render_field(form.lastName, class="form-control", placeholder="Last Name") }}
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                {{ render_field(form.gender, class="form-control", placeholder="Gender") }}
+              </div>
+              <div class="col-md-6">
+                {{ render_field(form.address, class="form-control", placeholder="Address") }}
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="form-row">
+              <div class="col-md-6">
+                {{ render_field(form.phone, class="form-control", placeholder="Phone") }}
+              </div>
+              <div class="col-md-6">
+                {{ render_field(form.email, class="form-control", placeholder="Email") }}
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+              <div class="form-group">
+                {{ render_field(form.course, class="form-control", placeholder="Course") }}
+              </div>
+          </div>
+
+          <button type="submit" class="col-md-5 btn btn-primary" href="{{ url_for('add_student') }}">Add Student
+          </button>
+          <button type="reset" class="col-md-5 btn btn-danger" href="{{ url_for('add_student') }}">Cancel</button>
+
+          <span class="error">
+                {% if form.errors %}
+                  {# <span class="alert-danger">{{ error }}</span>#}
+                {% endif %}
+               </span>
+        </form>
+        <div class="text-center">
+          <h4>Display Errors here</h4>
+        </div>
+      </div>
+    </div>
+      </div>
+
+    <div class="col-md-6">
+        <!-- Card Begin -->
+        <div class="card mt-3">
+          <div class="card-header bg-warning">
+             TO DO
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Add some data</h5>
+            <p class="card-text">
+              Add some info here
+            </p>
+          </div>
+        </div>
+
+    </div>
+    </div>
+  </div>
+
+{% endblock %}

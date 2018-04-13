@@ -1,0 +1,63 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %} List Payments {% endblock %}
+
+{% block content %}
+  <div class="container-fluid">
+
+  <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{{ url_for('payments') }}">{% block breadcrumbs_home %}
+          Payments
+        {% endblock %}</a>
+      </li>
+      <li class="breadcrumb-item active">{% block breadcrumbs_page %} Add Payment /
+        <a href="{{ url_for('add_payment') }}" class="btn btn-success right btn-sm right"> Add Payments</a>
+      {% endblock %}</li>
+    </ol>
+
+    <div class="card mb-3">
+      <div class="card-header bg-warning">
+        <i class="fa fa-table"></i> List Payments
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+              <th>Student Code</th>
+              <th>Amount</th>
+              <th>Paid for</th>
+
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+              <th>Student Code</th>
+              <th>Amount</th>
+              <th>Paid for</th>
+            </tr>
+            </tfoot>
+            <tbody>
+            {% for payment in all_payments %}
+              <tr>
+                <td>{{ payment.students }}</td>
+                <td>{{ payment.amount }}</td>
+                <td>{{ payment.reason }}</td>
+
+              </tr>
+
+            {% endfor %}
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+    </div>
+
+
+  </div>
+
+{% endblock %}

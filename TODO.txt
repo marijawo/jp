@@ -1,0 +1,23 @@
+HTTract:
+    http://jinja.pocoo.org/docs/templates
+
+
+For a working example of using Flask-Security with Flask-Admin, have a look at
+https://github.com/flask-admin/Flask-Admin/tree/master/examples/auth.
+
+Now, you’ll need to manually pass in some context variables for the Flask-Admin templates to render correctly
+when they’re being called from the Flask-Security views. Defining a security_context_processor function will take
+care of this for you:
+def security_context_processor():
+    return dict(
+        admin_base_template=admin.base_template,
+        admin_view=admin.index_view,
+        h=admin_helpers,
+    )
+
+In the navigation menu, components that are not accessible to a particular user will not be displayed for that user.
+For an example of using Flask-Login with Flask-Admin, have a look at
+https://github.com/flask-admin/Flask-Admin/tree/master/examples/auth-flask-login.
+
+########## Hosting the Aplication
+sudo gem install localtunnel

@@ -1,0 +1,79 @@
+{% extends 'layouts/master.html' %}
+
+{% block title %} Edit Course {% endblock %}
+
+{% block content %}
+
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="{{ url_for('courses') }}">{% block breadcrumbs_home %}
+          Courses
+        {% endblock %}</a>
+      </li>
+      <li class="breadcrumb-item active">{% block breadcrumbs_page %} Edit Course {% endblock %}</li>
+    </ol>
+    <!-- BEGIN Form -->
+
+    <div class="bg-success">
+      {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card mx-auto mt-3">
+          <div class="card-header bg-warning">Add Course</div>
+          <div class="card-body">
+            {% from "_formhelpers.html" import render_field %}
+            <form action="{{ url_for('update_course') }}" method="post">
+                <div class="form-row">
+                  <div class="col-md-6">
+                    {{ form.csrf_token }}
+{#                    {{ form.hidden_tag() }}#}
+                    {{ render_field(form.id, class="form-control", placeholder="ID") }}
+                    {{ render_field(form.name, class="form-control", placeholder="Course Name") }}
+                  </div>
+                  <div class="col-md-6">
+                    {{ render_field(form.description, class="form-control", placeholder="Course Description") }}
+                    <span class="error">
+                {% if form.errors %}
+                {% endif %}
+               </span>
+
+                  </div>
+                </div>
+              </div>
+
+              {{ form.submit(class="btn btn-primary") }}
+              <input type="reset" class="btn btn-danger" value="Cancel">
+            </form>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <!-- Card Begin -->
+        <div class="card mt-3">
+          <div class="card-header bg-warning">
+            TO DO
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">Add some data</h5>
+            <p class="card-text">
+              Add some info here
+            </p>
+          </div>
+        </div>
+      </div>
+    </div> <!-- END Row -->
+
+  </div>
+
+
+{% endblock %}

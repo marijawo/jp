@@ -1,0 +1,62 @@
+{% extends 'layouts/master.html' %}
+
+{% block content %}
+
+  <div class="container-fluid">
+    <!-- Breadcrumbs-->
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item">
+        <a href="index.html">{% block breadcrumbs_home %}
+          Login
+        {% endblock %}</a>
+      </li>
+      <li class="breadcrumb-item active">{% block breadcrumbs_page %} {% endblock %}</li>
+    </ol>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header bg-warning">
+            Login
+          </div>
+          <div class="card-body">
+            {% from "security/_macros.html" import render_field_with_errors, render_field %}
+            {% include "security/_messages.html" %}
+            <h1>{{ _('Login') }}</h1>
+            <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+              {{ login_user_form.hidden_tag() }}
+              {{ render_field_with_errors(login_user_form.email, class="form-control") }}
+              {{ render_field_with_errors(login_user_form.password, class="form-control") }}
+              {{ render_field_with_errors(login_user_form.remember, class="") }}
+
+              {{ render_field(login_user_form.next) }}
+              {{ render_field(login_user_form.submit) }}
+            </form>
+            {% include "security/_menu.html" %}
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="col-md-6">
+        <!-- Card Begin -->
+        <div class="card mt-3">
+          <div class="card-header bg-warning">
+             Marijawo Institute of Technologies and Innovation Center (MITI)
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+              Student Information System
+            </h5>
+            <p class="card-text">
+              A Student information syste to keep record of registered student and their payments
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+{% endblock %}
